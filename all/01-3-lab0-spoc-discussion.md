@@ -30,9 +30,9 @@
 了解函数调用栈对lab实验有何帮助？
 - [x]  
 
-> 除了错可以调试 
+> 除了错可以调试
 > 对于函数的调用过程和程序的运行过程有更好的理解。
-> 便于调试以及检查。 
+> 便于调试以及检查。
 
 你希望从lab中学到什么知识？
 - [x]  
@@ -57,14 +57,14 @@
 ucore lab实验
 - [x]  
 
-> clone 仓库 
+> clone 仓库
 > gitclone http://www.github.com/chyyuu/ucore_lab
 
 尝试用qemu+gdb（or ECLIPSE-CDT）调试lab1
 - [x]   
 
-> 清除文件夹：make clean 
-> 编译lab1：make 
+> 清除文件夹：make clean
+> 编译lab1：make
 > 调出debug命令行：make debug
 
 对于如下的代码段，请说明”：“后面的数字是什么含义
@@ -116,7 +116,7 @@ SETGATE(intr, 0,1,2,3);
 请分析 [list.h](https://github.com/chyyuu/ucore_lab/blob/master/labcodes/lab2/libs/list.h)内容中大致的含义，并能include这个文件，利用其结构和功能编写一个数据结构链表操作的小C程序
 - [x]  
 
-> 
+>
 
 ---
 
@@ -136,28 +136,28 @@ SETGATE(intr, 0,1,2,3);
 ```
 sudo apt-get install hexedit
 cd YOUR v9-cpu DIR
-git pull 
+git pull
 cd YOUR os_course_spoc_exercise DIR
-git pull 
+git pull
 ```
 
 分析和实验funcall.c，需要完成的内容包括： 
 -[X]
 
- - 修改代码，可正常显示小组两位同学的学号（用字符串） 
+ - 修改代码，可正常显示小组两位同学的学号（用字符串）
  - 生成funcall.c的汇编码，理解其实现并给汇编码写注释
  - 尝试用xem的简单调试功能单步调试代码
  - 回答如下问题：
-   - funcall中的堆栈有多大？是内核态堆栈还是用户态堆栈
-   - funcall中的全局变量ret放在内存中何处？如何对它寻址？
-   - funcall中的字符串放在内存中何处？如何对它寻址？
-   - 局部变量i在内存中的何处？如何对它寻址？
-   - 当前系统是处于中断使能状态吗？
-   - funcall中的函数参数是如何传递的？函数返回值是如何传递的？
-   - 分析并说明funcall执行文件的格式和内容
+   - funcall中的堆栈有多大？是内核态堆栈还是用户态堆栈 程序运行在内核态，可用堆栈空间几乎可达整个内存。
+   - funcall中的全局变量ret放在内存中何处？如何对它寻址？ 0x0000009c, pc + 0x18 (当前指令地址加偏移)
+   - funcall中的字符串放在内存中何处？如何对它寻址？ 0x00000090, pc + 0x1c
+   - 局部变量i在内存中的何处？如何对它寻址？ %sp + 0x4
+   - 当前系统是处于中断使能状态吗？ 否
+   - funcall中的函数参数是如何传递的？函数返回值是如何传递的？ 置于栈上，从右向左入栈；置于寄存器 a
+   - 分析并说明funcall执行文件的格式和内容 前 16 个字节是文件头，后边的是程序机器码。文件头部前四个字节是 Magic number，用于判断文件格式，偏移 0x8 至 0xb 是入口地址。启动时，将机器码（从文件偏移 0x10 开始）载入到内存的 0x0 偏移处，然后将 pc 置为入口地址，开始执行。
 　
 
-分析和实验os0.c，需要完成的内容包括： 
+分析和实验os0.c，需要完成的内容包括：
 -[X]
 
  - 生成os0.c的汇编码，理解其实现并给汇编码写注释
@@ -169,9 +169,9 @@ git pull
    - 系统产生中断后，CPU会做哪些事情？（在没有软件帮助的情况下）
    - CPU执行RTI指令的具体完成工作是哪些？
 
-[HARD]分析和实验os1/os3.c，需要完成的内容包括： 
+[HARD]分析和实验os1/os3.c，需要完成的内容包括：
 -[X]
- 
+
  - os1中的task1和task2的堆栈的起始和终止地址是什么？
  - os1是如何实现任务切换的？
  - os3中的task1和task2的堆栈的起始和终止地址是什么？
